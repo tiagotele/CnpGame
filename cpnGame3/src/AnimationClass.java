@@ -26,7 +26,7 @@ public class AnimationClass extends Applet  implements Runnable, KeyListener {
     Rectangle rPlace[];
     String idRPlace[];
     
-
+//teste
     int inPlace=0;
     int edgePlace=0;
     
