@@ -28,8 +28,7 @@ public class AnimationClass extends Applet  implements Runnable, KeyListener {
     
     int inPlace=0;
     int edgePlace=0;
-    
-    
+        
     Random rand = new Random();
     private Image imagePlace[];
     ArrayList<Place> p;
