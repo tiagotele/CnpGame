@@ -14,7 +14,6 @@ import Model.Arc;
 import Model.Place;
 import Model.Transition;
 
-
 public class CpnXmlReader {
 
 	// caminho (path) do arquivo XML
@@ -57,7 +56,9 @@ public class CpnXmlReader {
 	public ArrayList<Place> lerPlaces() throws Exception {
 
 		// pega todos os elementos place do XML
+
 		NodeList nl = elem.getElementsByTagName("place");
+
 		// teste
 		// ClassesAuxiliares.Referencias.setRefPlaces(nl);
 
@@ -68,6 +69,7 @@ public class CpnXmlReader {
 		// percorre cada elemento place encontrado
 		for (int i = 0; i < nl.getLength(); i++) {
 			Element tagPlace = (Element) nl.item(i);
+			NodeList nlType = tagPlace.getElementsByTagName("type");
 			NodeList nlInitmark = tagPlace.getElementsByTagName("initmark");
 
 			NodeList nlPosattr = tagPlace.getElementsByTagName("posattr");
@@ -90,21 +92,32 @@ public class CpnXmlReader {
 			String id = tagPlace.getAttribute("id");
 			String text = getChildTagValue(tagPlace, "text");
 			String initmark = "";
+			String type = "";
 			String x = tagPosattr.getAttribute("x");
 			String y = tagPosattr.getAttribute("y");
 
 			// System.out.println("id: "+id+" || x: "+x+" || y: "+y);
 
+			// // pega os dados do type que � filho do place atual
+			for (int j = 0; j < nlType.getLength(); j++) {
+				Element tagType = (Element) nlType.item(j);
+				type = getChildTagValue(tagType, "text");
+			}
+
 			// // pega os dados do initmark que � filho do place atual
 			for (int j = 0; j < nlInitmark.getLength(); j++) {
 				Element tagInitmark = (Element) nlInitmark.item(j);
-				initmark = getChildTagValue(tagInitmark, "text");
+				try {
+					initmark = getChildTagValue(tagInitmark, "text");
+				}catch (NullPointerException e) {
+					initmark ="";
+				}
 			}
 
 			// cria uma nova instancia do Place com os dados do xml
 			int xi = (int) Double.parseDouble(x);
 			int yi = (int) Double.parseDouble(y);
-			Place place = new Place(id, text, initmark, xi, yi);
+			Place place = new Place(id, text, initmark, type, xi, yi);
 
 			// adiciona o place na colecao (vector) de places
 			places.add(place);
@@ -127,12 +140,29 @@ public class CpnXmlReader {
 		for (int i = 0; i < nl.getLength(); i++) {
 			Element tagTransition = (Element) nl.item(i);
 
+			NodeList nlCond = tagTransition.getElementsByTagName("cond");
+			
 			// pega os dados do place atual
 			String id = tagTransition.getAttribute("id");
 			String text = getChildTagValue(tagTransition, "text");
+			String cond = "";
+			
+			
+			for (int j = 0; j < nlCond.getLength(); j++) {
+				Element tagCond = (Element) nlCond.item(j);
+									
+				try{
+					cond = getChildTagValue(tagCond, "text");
+				}catch (NullPointerException e) {
+					cond="";
+				}
+					
+			}
 
+			System.out.println("cond: "+cond);
+			
 			// cria uma nova instancia do Place com os dados do xml
-			transition = new Transition(id, text);
+			transition = new Transition(id, text, cond);
 
 			// adiciona o place na cole��o (vector) de places
 			transitions.add(transition);
@@ -154,21 +184,23 @@ public class CpnXmlReader {
 
 		// prepara o vetor
 		ArrayList<Transition> transitionsHierarquia = new ArrayList<Transition>();
-		
-//		System.out.println("tamanho nl: " + nl.getLength());
 
-//		for (int i = 0; i < nl.getLength(); i++) {
-//			System.out.println("item " + i + " do nl: " + nl.item(i));
-//			System.out.println("content: " + nl.item(i).getTextContent());
-//		}
+		// System.out.println("tamanho nl: " + nl.getLength());
+
+		// for (int i = 0; i < nl.getLength(); i++) {
+		// System.out.println("item " + i + " do nl: " + nl.item(i));
+		// System.out.println("content: " + nl.item(i).getTextContent());
+		// }
 
 		// percorre cada elemento transition encontrado
 		for (int i = 0; i < nl.getLength(); i++) {
 			// System.out.println("item "+i+" do nl: "+ nl.item( i ));
 			Element tagTransition = (Element) nl.item(i);
 
-			System.out.println("elemento posicao "+i+" possui subpageinfo? " + tagTransition.hasAttribute("subpageinfo"));
-			
+			System.out.println("elemento posicao " + i
+					+ " possui subpageinfo? "
+					+ tagTransition.hasAttribute("subpageinfo"));
+
 			if (tagTransition.hasAttribute("subst")) {
 
 				// System.out.println("has attributes? "+
@@ -181,14 +213,15 @@ public class CpnXmlReader {
 				// pega os dados da transicao atual
 				String subst = tagTransition.getAttribute("subst");
 				String text = getChildTagValue(tagTransition, "subpageinfo");
-
+/*
 				// cria uma nova instancia do Transition com os dados do xml
-				Transition mytransition = new Transition(subst, text);
+				Transition mytransition = new Transition(subst, text, cond);
 
 				System.out.println("new transition: " + mytransition.getId());
 
 				// adiciona o place na colecao (vector) de transicoes
 				transitionsHierarquia.add(mytransition);
+				*/
 			}
 		}
 
@@ -256,6 +289,7 @@ public class CpnXmlReader {
 
 		if (child == null)
 			return null;
+
 		
 		return child.getFirstChild().getNodeValue();
 

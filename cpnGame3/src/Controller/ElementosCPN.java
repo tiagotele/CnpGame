@@ -8,7 +8,6 @@ import Model.Place;
 import Model.Transition;
 
 
-
 public class ElementosCPN {
 	
 	ArrayList<Place> places;
@@ -178,8 +177,6 @@ public class ElementosCPN {
 		}
 	}
 	
-	
-	
 			
 	
     public ArrayList<Place> getPlaces() {
@@ -211,8 +208,8 @@ public class ElementosCPN {
     try {  
       	
        // informe o caminho correto do seu arquivo xm cpn tools
-//      reader = new CpnXmlReader("CPN_testes/GameTesteArtigoColorida.cpn" ); 	//teste
-      reader = new CpnXmlReader("CPN_testes/GameTeste.cpn" ); 	//teste  
+      reader = new CpnXmlReader("CPN_testes/GameTesteArtigoColorida.cpn" ); 	//teste
+//      reader = new CpnXmlReader("src/CPN_testes/GameTeste.cpn" ); 	//teste  
 
        
        /** quando tiver a interface de escolha da rede, colocar o
@@ -273,10 +270,18 @@ public class ElementosCPN {
     				 
     				 if ( idTrans.equals(transend) && idPlace.equals(placeend)) {
     					 if (orientation.equals("TtoP"))
+    						 try {
     					    matrizPost[p][t]= Integer.parseInt(textoArco);
+    						 }catch (NumberFormatException e) {
+    							 matrizPost[p][t]= 2;
+							}
     					 else if (orientation.equals("PtoT")) {
 //    						 if (  textoArco )
+    						 try {
     							 matrizPre[p][t]= Integer.parseInt(textoArco);
+    						 }catch (NumberFormatException e) {
+    							 matrizPre[p][t]= 2;
+							}
     					 }
     					  
     				 }   
@@ -287,8 +292,7 @@ public class ElementosCPN {
     	}
     	
     	
-    }      
-    
+    }
     
     public void showMatrizC() { 
     	System.out.println("\n*** Matriz C ***");

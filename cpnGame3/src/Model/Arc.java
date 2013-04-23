@@ -6,6 +6,15 @@ public class Arc {
 	private String transend; // idRef
 	private String placeend; // idRef
 	private String text;
+	private String condicao;	//new
+	
+	public void setCondicao(String condicao) {
+		this.condicao = condicao;
+	}
+	
+	public String getCondicao() {
+		return condicao;
+	}
 
 	public String getId() {
 		return id;
@@ -48,7 +57,7 @@ public class Arc {
 		String aux = "";
 		
 		if (text.startsWith("(")) { //exemplo: cor = (b,a)
-			String aux2 = text.substring(1, text.length()-1);
+			String aux2 = text;//.substring(1, text.length()-1);
 			System.out.println("aux2 == "+aux2);
 			aux = aux2;
 

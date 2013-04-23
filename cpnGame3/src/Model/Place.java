@@ -8,6 +8,7 @@ public class Place {
 	private String id;
 	private String text;
 	private String initmark;
+	private String type;
 	private int x;
 	private int y;
 	private ArrayList<Place> saida;
@@ -17,10 +18,12 @@ public class Place {
 	ArrayList<Ficha> fichas;
 	Ficha fTeste;
 	
-	public Place (String id, String text, /*String tipoDeFicha, */String initmark, int x, int y ) {
+	
+	public Place (String id, String text, /*String tipoDeFicha, */String initmark, String type, int x, int y ) {
 		setId (id);
 		setText(text);
 		setInitmark(initmark);
+		setType(type);
 		setX(x);
 		setY(y);
 		
@@ -115,8 +118,16 @@ public class Place {
 		return initmark;
 	}
 	public void setInitmark(String initmark) {
-		this.initmark = initmark.substring(0, initmark.length()-2);
+		this.initmark = initmark.trim();
 	}
+	
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type.trim();
+	}
+	
 	public String getId() {
 		return id;
 	}
@@ -138,6 +149,7 @@ public class Place {
 		return "Place [id =" + getId() + ", " +
 				      "text = " + getText() + ", " +
 				      "initmark = " + getInitmark() + ", "+ 
+				      "type = " + getType() + ", "+ 
 				      "x = " + getX() + ", " +
 				      "y = " + getY() +"]";
 	}
