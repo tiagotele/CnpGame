@@ -165,20 +165,16 @@ public class AnimationClass extends Applet  implements Runnable, KeyListener {
     public void gameUpdate() {
         //see if it's time to animate
         ball.updateAnimation();
-        
-        
+      
         //update the ball position
         ball.updatePosition();
         
         //lastly, update the rotation
         ball.updateRotation();
         
-        
         double x=0;
         double y=0;
         double angle=0;
-        
-        
         
         if (keyCode == KeyEvent.VK_LEFT) {
         	x=-0.5;
