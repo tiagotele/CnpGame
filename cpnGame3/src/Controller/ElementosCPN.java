@@ -18,6 +18,8 @@ public class ElementosCPN {
 	private int matrizPost [][];
 	private int matrizC    [][];
 	
+	private String[][] matrizPreString;
+	
 	private int placeToPlace [][];
 	
 	//elementos da rede
@@ -26,6 +28,7 @@ public class ElementosCPN {
 	Transition transitionShow;
 	Transition  currentTransitionShowMatrizesPost;
 	Transition  currentTransitionShowMatrizesPre;
+	Transition  currentTransitionShowMatrizesPreString;
 	Transition  currentTransitionShowMatrizC;
 	Transition  currentTransitionFillM;
 	
@@ -208,7 +211,7 @@ public class ElementosCPN {
     try {  
       	
        // informe o caminho correto do seu arquivo xm cpn tools
-      reader = new CpnXmlReader("CPN_testes/GameTesteArtigoColorida.cpn" ); 	//teste
+      reader = new CpnXmlReader("src/CPN_testes/GameTesteArtigoColorida.cpn" ); 	//teste
 //      reader = new CpnXmlReader("src/CPN_testes/GameTeste.cpn" ); 	//teste  
 
        
@@ -240,7 +243,11 @@ public class ElementosCPN {
     private void fillMatrizes() {
     	matrizPost  = new int[places.size()][transitions.size()];
         matrizPre  = new int[places.size()][transitions.size()];
+        matrizPreString  = new String[places.size()][transitions.size()];
+        
         matrizC    = new int[places.size()][transitions.size()];
+        
+        
   
   /*  	System.out.println("imprimir os arcos: ");
     	for(int v = 0; v<arcs.size();v++)
@@ -257,6 +264,7 @@ public class ElementosCPN {
     			 
     			matrizPost[p][t] =0;
     			matrizPre [p][t] =0;
+    			matrizPreString[p][t] = "0";
     			for (int a=0; a< arcs.size(); a++ ) {
     				 currentArc = (Arc) arcs.get( a );
     				 String transend = currentArc.getTransend();
@@ -273,14 +281,24 @@ public class ElementosCPN {
     						 try {
     					    matrizPost[p][t]= Integer.parseInt(textoArco);
     						 }catch (NumberFormatException e) {
-    							 matrizPost[p][t]= 2;
+    							 matrizPost[p][t]= 2;	//
+    							 
+    							 
+    							 System.out.println("condicao TtoP: "+textoArco);
 							}
     					 else if (orientation.equals("PtoT")) {
 //    						 if (  textoArco )
     						 try {
+    							 matrizPreString[p][t] = currentArc.getText();	/////
+    							 System.out.println("matrizPreString = "+matrizPreString[p][t] );
+    							 
     							 matrizPre[p][t]= Integer.parseInt(textoArco);
+    							
+    							 
     						 }catch (NumberFormatException e) {
     							 matrizPre[p][t]= 2;
+    							 
+    							 System.out.println("condicao PtoT: "+textoArco);
 							}
     					 }
     					  
@@ -320,6 +338,22 @@ public class ElementosCPN {
     			currentTransitionShowMatrizesPre = (Transition) transitions.get(t);
     			String textTrans = currentTransitionShowMatrizesPre.getText();
     			System.out.print("["+textPLace+","+textTrans+"]="+matrizPre[p][t]+"\t");
+    		}
+    	}
+    	System.out.println();
+    	System.out.println();
+    }
+    
+    public void showMatrizPreString() {
+    	System.out.println("\n*** Matriz Pre String ***");
+    	for (int p=0; p<matrizPreString.length; p++) {
+    		System.out.println();
+    		Place currentPlace = (Place) places.get(p);
+            String textPLace = currentPlace.getText();
+    		for (int t=0; t<matrizPreString[p].length; t++) {
+    			currentTransitionShowMatrizesPreString = (Transition) transitions.get(t);
+    			String textTrans = currentTransitionShowMatrizesPreString.getText();
+    			System.out.print("["+textPLace+","+textTrans+"]="+matrizPreString[p][t]+"\t");
     		}
     	}
     	System.out.println();
@@ -381,6 +415,8 @@ public class ElementosCPN {
     	elementosCPN.showTransitions();
     	elementosCPN.showArcs();
     	elementosCPN.showMatrizPre();
+    	elementosCPN.showMatrizPreString();
+    	
     	elementosCPN.showMatrizPost();
     	elementosCPN.showMatrizC();
     	elementosCPN.showRelativeTopLeft();

@@ -1,4 +1,4 @@
-
+package Controller;
 
 import java.awt.*;
 import java.applet.*;
@@ -10,7 +10,6 @@ import java.awt.event.*;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-import Controller.ElementosCPN;
 import Model.Place;
 import View.AnimatedSprite;
 import View.Point2D;
@@ -51,10 +50,6 @@ public class AnimationClass extends Applet  implements Runnable, KeyListener {
     Place currentPlacePaint;
     Place currentPlaceInit;
     Place currentPlaceUpdate;
-    
-    //strings auxiliares dos places in e edge: usando a comparação para encontrar os valores dos arcos pre
-    String currentInplace = "";
-    String currentEdgeplace = "";
     
     private URL getURL(String filename) {
          URL url = null;
@@ -209,75 +204,30 @@ public class AnimationClass extends Applet  implements Runnable, KeyListener {
         ball.setFaceAngle(angle);
         
         
-       
-        
         currentPlaceUpdate = (Place) p.get(0);
         for (int i=0; i<rPlace.length; i++) {
         	currentPlaceUpdate = (Place) p.get(i);
-        	
         	if (rPlace[i].contains(ball.getBounds())){
         		
         		System.out.println("inPlace Place = "+currentPlaceUpdate.getText());
-        		currentInplace = currentPlaceUpdate.getId();
+        		
         		inPlace = i;
         	}	
         	
         	if (rPlace[i].intersects(ball.getBounds())){
         		System.out.println("edgePlace Place = "+currentPlaceUpdate.getText());
-        		currentEdgeplace = currentPlaceUpdate.getId();
+        		
         		edgePlace = i;
         	}
         	
         	
         	if (inPlace!=edgePlace) {
         		
-        		System.out.println("currentInplace 1 = "+currentInplace);
         		
-        		String currentTrans="";
-        		
-        		
-        		for (int trans=0; trans<eCPN.getMatrizPre()[0].length; trans++) {
-        			System.out.println("inplace - show PtoT: ["+inPlace+"]["+trans+"] = "+
-        		                                   eCPN.getMatrizPre()[inPlace][trans]);
-        			
-        			if (eCPN.getMatrizPre()[inPlace][trans]!=0) {
-        				//guardar os pres em algum lugar
-        				System.out.println("condicao:  ["+inPlace+"]["+trans+"] =" +
-        						" "+eCPN.getTransitions().get(trans).getText());
-        				currentTrans = eCPN.getTransitions().get(trans).getId();
-        				
-        				for (int iArc=0; iArc<eCPN.getArcs().size(); iArc++) {
-        					String auxTransendArc = eCPN.getArcs().get(iArc).getTransend();
-        					String auxPlaceendArc  = eCPN.getArcs().get(iArc).getPlaceend();
-        					String auxOrientation  = eCPN.getArcs().get(iArc).getOrientation();
-        					
-        					System.out.println("currentInplace = "+currentInplace);
-        					
-        					if (currentTrans.equals(auxTransendArc) &&
-        						currentInplace.equals(auxPlaceendArc) &&
-        						auxOrientation.equals("PtoT")) {
-        						//achou o arco de entrada da transicao
-        						
-        						System.out.println("condicao de entrada inplace: "+eCPN.getArcs().get(iArc).getText());
-        						//pra amanha: fazer a tabela
-        						
-        						
-        					}
-        				}
-        			}
+        		for (int m=0; m<eCPN.getMatrizPre().length; m++) {
+        			System.out.println("show PtoT: ["+m+"]["+inPlace+"] = "+
+        		                                   eCPN.getMatrizPre()[m][inPlace]);
         		}
-        		
-        		
-//        		for (int trans=0; trans<eCPN.getMatrizPre()[0].length; trans++) {
-//        			System.out.println("edgeplace - show PtoT: ["+edgePlace+"]["+trans+"] = "+
-//        		                                   eCPN.getMatrizPre()[edgePlace][trans]);
-//        			
-//        			if (eCPN.getMatrizPre()[edgePlace][trans]!=0) {
-//        				//guardar os pres em algum lugar
-//        				System.out.println(eCPN.getArcs().get(trans).getCondicao());
-//        			}
-//        		}
-        		
         		
         		boolean permitido = false;
         		        		
