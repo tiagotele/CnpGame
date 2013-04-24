@@ -211,7 +211,8 @@ public class ElementosCPN {
     try {  
       	
        // informe o caminho correto do seu arquivo xm cpn tools
-      reader = new CpnXmlReader("src/CPN_testes/GameTesteArtigoColorida.cpn" ); 	//teste
+//      reader = new CpnXmlReader("src/CPN_testes/GameTesteArtigoColorida.cpn" ); 	//ElementosCPN
+    	reader = new CpnXmlReader("CPN_testes/GameTesteArtigoColorida.cpn" ); 	//AnimationClass
 //      reader = new CpnXmlReader("src/CPN_testes/GameTeste.cpn" ); 	//teste  
 
        
