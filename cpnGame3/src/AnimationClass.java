@@ -275,6 +275,8 @@ public class AnimationClass extends Applet  implements Runnable, KeyListener {
 //        		}
         		
         		
+        		////Análise de disparo antiga
+        		/**
         		boolean permitido = false;
         		        		
         		int [][] placeToPlace = eCPN.getPlaceToPlace();
@@ -285,12 +287,12 @@ public class AnimationClass extends Applet  implements Runnable, KeyListener {
         				 break;
         			 }
         		
-        		
-        		
+        		       		
         		
         		if (!permitido)
         			keyCode=0;	
-        				 
+        		
+        		**/
         	}
         	
         }	       		
