@@ -265,7 +265,7 @@ public class CpnXmlReader {
 			String orientation = tagArc.getAttribute("orientation");
 			String transend = tagTransend.getAttribute("idref");
 			String placeend = tagPlaceend.getAttribute("idref");
-
+			
 			// cria uma nova instancia do Place com os dados do xml
 			arc = new Arc(id, orientation, transend, placeend, text);
 

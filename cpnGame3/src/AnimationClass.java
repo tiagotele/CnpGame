@@ -11,7 +11,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import Controller.ElementosCPN;
+import Model.Arc;
 import Model.Place;
+import Model.Transition;
 import View.AnimatedSprite;
 import View.Point2D;
 
@@ -231,11 +233,23 @@ public class AnimationClass extends Applet  implements Runnable, KeyListener {
         		
         		String currentTrans="";
         		
+        		//PARA DISPARAR:
+        		//1o: verificar as fichas presentes nos places de entrada (contando que existe só uma transição de saida para qualquer place da rede)
+        		//2o: guardar os arcos de entrada
+        		//3o: verificar as condições na transição        		
         		
+        		
+        		ArrayList<Arc> arcosEntrada = new ArrayList<Arc>();
+//        		ArrayList<Arc> arcosSaida = new ArrayList<Arc>();
+        		
+        		ArrayList<Place> placesEntrada = new ArrayList<Place>();
+        		Transition transicaoAnalisada = null;
+        		
+        		//arcos de entrada da transição
         		for (int trans=0; trans<eCPN.getMatrizPre()[0].length; trans++) {
         			System.out.println("inplace - show PtoT: ["+inPlace+"]["+trans+"] = "+
         		                                   eCPN.getMatrizPre()[inPlace][trans]);
-        			
+        			//verificar se tem algum caminho da casa para a transição
         			if (eCPN.getMatrizPre()[inPlace][trans]!=0) {
         				//guardar os pres em algum lugar
         				System.out.println("condicao:  ["+inPlace+"]["+trans+"] =" +
@@ -254,14 +268,70 @@ public class AnimationClass extends Applet  implements Runnable, KeyListener {
         						auxOrientation.equals("PtoT")) {
         						//achou o arco de entrada da transicao
         						
-        						System.out.println("condicao de entrada inplace: "+eCPN.getArcs().get(iArc).getText());
+        						System.out.println("condicao de entrada inplace: "+ eCPN.getArcs().get(iArc).getText());
         						//pra amanha: fazer a tabela
         						
+        						//1o:
+        						placesEntrada.add(currentPlaceUpdate);
         						
+        						//2o:
+        						//adicionar aos arcos de entrada
+        						arcosEntrada.add(eCPN.getArcs().get(iArc));
+        						
+        						//3o
+        						transicaoAnalisada = eCPN.getTransitions().get(trans);
         					}
         				}
         			}
         		}
+        		
+        		//disparar:
+        		//existe alguma condição no arco?
+        		boolean existeCondArc = false;
+        		for (int b=0; b<arcosEntrada.size() && existeCondArc==false; b++) {
+//        			if (arcosEntrada.get(b).getCondicao().) {}
+        		}
+        		
+        		/**
+        		//arcos de saida da transição
+        		for (int trans=0; trans<eCPN.getMatrizPost()[0].length; trans++) {
+        			System.out.println("inplace - show PtoT: ["+inPlace+"]["+trans+"] = "+
+        		                                   eCPN.getMatrizPost()[inPlace][trans]);
+        			
+        			if (eCPN.getMatrizPost()[inPlace][trans]!=0) {
+        				//guardar os pres em algum lugar
+        				System.out.println("condicao:  ["+inPlace+"]["+trans+"] =" +
+        						" "+eCPN.getTransitions().get(trans).getText());
+        				currentTrans = eCPN.getTransitions().get(trans).getId();
+        				
+        				for (int iArc=0; iArc<eCPN.getArcs().size(); iArc++) {
+        					String auxTransendArc = eCPN.getArcs().get(iArc).getTransend();
+        					String auxPlaceendArc  = eCPN.getArcs().get(iArc).getPlaceend();
+        					String auxOrientation  = eCPN.getArcs().get(iArc).getOrientation();
+        					
+        					System.out.println("currentInplace = "+currentInplace);
+        					
+        					if (currentTrans.equals(auxTransendArc) &&
+        						currentInplace.equals(auxPlaceendArc) &&
+        						auxOrientation.equals("TtoP")) {
+        						//achou o arco de entrada da transicao
+        						
+        						System.out.println("condicao de saída inplace: "+ eCPN.getArcs().get(iArc).getText());
+        						//pra amanha: fazer a tabela
+        						
+        						//adicionar aos arcos de entrada
+        						arcosSaida.add(eCPN.getArcs().get(iArc));
+        					}
+        				}
+        			}
+        		}
+        		
+        		**/
+        		
+        		
+        		//3o
+        		
+        		
         		
         		
 //        		for (int trans=0; trans<eCPN.getMatrizPre()[0].length; trans++) {
