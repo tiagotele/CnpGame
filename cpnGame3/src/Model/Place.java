@@ -14,12 +14,11 @@ public class Place {
 	private ArrayList<Place> saida;
 	private ArrayList<MyInt> pass;
 	
-	private String tipoFicha;
-	ArrayList<Ficha> fichas;
-	Ficha fTeste;
+	ArrayList<Token> tokens;
+	Token tokenTeste;
 	
 	
-	public Place (String id, String text, /*String tipoDeFicha, */String initmark, String type, int x, int y ) {
+	public Place (String id, String text, String initmark, String type, int x, int y ) {
 		setId (id);
 		setText(text);
 		setInitmark(initmark);
@@ -28,43 +27,45 @@ public class Place {
 		setY(y);
 		
 		//this.tipoFicha = tipoDeFicha;
-		fichas = new ArrayList<Ficha>();
-		fTeste = new Ficha("lala", "lele");
-	}
-	
-	//teste inicial com fichas coloridas
-	public void addFichas (Ficha f) {
-		fichas.add(f);
-	}
-
-	//teste inicial com fichas coloridas
-	public void addFichas (ArrayList<Ficha> f) {
-		for (int i = 0; i<f.size(); i++)
-				fichas.add(f.get(i));
-	}
-
-	//teste inicial com fichas coloridas
-	public void addFichas (String tipo, String nome) {
-		Ficha f = new Ficha(tipo, nome);
-		fichas.add(f);
-	}
-
-	//teste inicial com fichas coloridas	
-	public ArrayList<Ficha> getTodasAsFichas () {
-		return fichas;
-	}
-	
-	//teste inicial com fichas coloridas	
-	public Ficha getFichaNaPosicaoX (int X) {
-		return fichas.get(X);
-	}
-	
-	//teste inicial com fichas coloridas	
-	public ArrayList<Ficha> getFichasDoTipoX (String X) {
-		ArrayList<Ficha> fichasDoMesmoTipo = new ArrayList<Ficha>();
+		tokens = new ArrayList<Token>();
 		
-		for (int i = 0; i<fichas.size(); i++)
-			fichasDoMesmoTipo.add(fichas.get(i));
+		Token t = new Token(type, initmark);
+		tokens.add(t);
+	}
+	
+	//teste inicial com fichas coloridas
+	public void addTokens (Token f) {
+		tokens.add(f);
+	}
+
+	//teste inicial com fichas coloridas
+	public void addTokens (ArrayList<Token> f) {
+		for (int i = 0; i<f.size(); i++)
+				tokens.add(f.get(i));
+	}
+
+	//teste inicial com fichas coloridas
+	public void addTokens (String tipo, String val) {
+		Token f = new Token(tipo, val);
+		tokens.add(f);
+	}
+
+	//teste inicial com fichas coloridas	
+	public ArrayList<Token> getTodasOsTokens () {
+		return tokens;
+	}
+	
+	//teste inicial com fichas coloridas	
+	public Token getTokenNaPosicaoX (int X) {
+		return tokens.get(X);
+	}
+	
+	//teste inicial com fichas coloridas	
+	public ArrayList<Token> getFichasDoTipoX (String X) {
+		ArrayList<Token> fichasDoMesmoTipo = new ArrayList<Token>();
+		
+		for (int i = 0; i<tokens.size(); i++)
+			fichasDoMesmoTipo.add(tokens.get(i));
 		
 		if (fichasDoMesmoTipo.size()==0)
 			return null;
@@ -75,12 +76,15 @@ public class Place {
 	public ArrayList<MyInt> getPass() {
 		return pass;
 	}
+	
 	public void setPass(ArrayList<MyInt> pass) {
 		this.pass = pass;
 	}
+	
 	public ArrayList<Place> getSaida() {
 		return saida;
 	}
+	
 	public void setSaida(ArrayList<Place> saida) {
 		this.saida = saida;
 	}
@@ -146,12 +150,21 @@ public class Place {
 	
 	@Override
 	public String toString() {
-		return "Place [id =" + getId() + ", " +
-				      "text = " + getText() + ", " +
-				      "initmark = " + getInitmark() + ", "+ 
-				      "type = " + getType() + ", "+ 
-				      "x = " + getX() + ", " +
-				      "y = " + getY() +"]";
+		String place = "Place [id =" + getId() + ", " +
+			      "text = " + getText() + ", " +
+			      "initmark = " + getInitmark() + ", "+ 
+			      "type = " + getType() + ", "+ 
+			      "x = " + getX() + ", " +
+			      "y = " + getY() +"]";
+		
+		String tokensPlace = "";
+		
+		for (Token i : tokens) {
+			tokensPlace = tokensPlace + " Token "+ i.toString() + "\n";
+		}
+		
+		
+		return place+tokensPlace;
 	}
 	
 }

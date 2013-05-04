@@ -1,4 +1,4 @@
-package Controller;
+package Cont;
 
 import java.util.*;
 
@@ -19,6 +19,7 @@ public class ElementosCPN {
 	private int matrizC    [][];
 	
 	private String[][] matrizPreString;
+	private String[][] matrizPostString;
 	
 	private int placeToPlace [][];
 	
@@ -29,6 +30,7 @@ public class ElementosCPN {
 	Transition  currentTransitionShowMatrizesPost;
 	Transition  currentTransitionShowMatrizesPre;
 	Transition  currentTransitionShowMatrizesPreString;
+	Transition  currentTransitionShowMatrizesPostString;
 	Transition  currentTransitionShowMatrizC;
 	Transition  currentTransitionFillM;
 	
@@ -207,13 +209,19 @@ public class ElementosCPN {
 		return matrizC;
 	}
 	
-	public ElementosCPN() {  
+	
+	public ElementosCPN (boolean local) {  
     try {  
-      	
-       // informe o caminho correto do seu arquivo xm cpn tools
-//      reader = new CpnXmlReader("src/CPN_testes/GameTesteArtigoColorida.cpn" ); 	//ElementosCPN
-    	reader = new CpnXmlReader("CPN_testes/GameTesteArtigoColorida.cpn" ); 	//AnimationClass
-//      reader = new CpnXmlReader("src/CPN_testes/GameTeste.cpn" ); 	//teste  
+    	
+    	 // informe o caminho correto do seu arquivo xml cpn tools
+    	//local true == exeução teste ElementosCPN.java
+    	//		false == execução de arquivoo externo
+    	 if (local) {
+    		 reader = new CpnXmlReader("bin/Controller/GameTesteArtigoColorida.cpn" );
+    	 }
+    	 else {
+    		 reader = new CpnXmlReader("Controller/GameTesteArtigoColorida.cpn" );
+    	 }
 
        
        /** quando tiver a interface de escolha da rede, colocar o
@@ -245,6 +253,7 @@ public class ElementosCPN {
     	matrizPost  = new int[places.size()][transitions.size()];
         matrizPre  = new int[places.size()][transitions.size()];
         matrizPreString  = new String[places.size()][transitions.size()];
+        matrizPostString  = new String[places.size()][transitions.size()];
         
         matrizC    = new int[places.size()][transitions.size()];
         
@@ -266,6 +275,7 @@ public class ElementosCPN {
     			matrizPost[p][t] =0;
     			matrizPre [p][t] =0;
     			matrizPreString[p][t] = "0";
+    			matrizPostString[p][t] = "0";
     			for (int a=0; a< arcs.size(); a++ ) {
     				 currentArc = (Arc) arcs.get( a );
     				 String transend = currentArc.getTransend();
@@ -280,7 +290,10 @@ public class ElementosCPN {
     				 if ( idTrans.equals(transend) && idPlace.equals(placeend)) {
     					 if (orientation.equals("TtoP"))
     						 try {
-    					    matrizPost[p][t]= Integer.parseInt(textoArco);
+    							 matrizPostString[p][t] = currentArc.getText();	/////
+    							 System.out.println("matrizPostString = "+matrizPostString[p][t] );
+    							 
+    							 matrizPost[p][t]= Integer.parseInt(textoArco);
     						 }catch (NumberFormatException e) {
     							 matrizPost[p][t]= 2;	//
     							 
@@ -361,6 +374,22 @@ public class ElementosCPN {
     	System.out.println();
     }
     
+    public void showMatrizPostString() {
+    	System.out.println("\n*** Matriz Post String ***");
+    	for (int p=0; p<matrizPostString.length; p++) {
+    		System.out.println();
+    		Place currentPlace = (Place) places.get(p);
+            String textPLace = currentPlace.getText();
+    		for (int t=0; t<matrizPostString[p].length; t++) {
+    			currentTransitionShowMatrizesPostString = (Transition) transitions.get(t);
+    			String textTrans = currentTransitionShowMatrizesPostString.getText();
+    			System.out.print("["+textPLace+","+textTrans+"]="+matrizPostString[p][t]+"\t");
+    		}
+    	}
+    	System.out.println();
+    	System.out.println();
+    }
+    
     public void showMatrizPost() {
     	System.out.println("\n*** Matriz Post ***");
     	for (int p=0; p<matrizPost.length; p++) {
@@ -410,15 +439,18 @@ public class ElementosCPN {
     
     public static void main( String[] args ) {  
         
-    	ElementosCPN elementosCPN = new ElementosCPN();  
+    	ElementosCPN elementosCPN = new ElementosCPN(true);  
     	
     	elementosCPN.showPlaces();
     	elementosCPN.showTransitions();
     	elementosCPN.showArcs();
+    	
     	elementosCPN.showMatrizPre();
     	elementosCPN.showMatrizPreString();
-    	
+    	    	
     	elementosCPN.showMatrizPost();
+    	elementosCPN.showMatrizPostString();
+    	
     	elementosCPN.showMatrizC();
     	elementosCPN.showRelativeTopLeft();
     	

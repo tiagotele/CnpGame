@@ -69,7 +69,7 @@ public class AnimationClass extends Applet  implements Runnable, KeyListener {
 
     public void init() {
     	
-    	eCPN = new ElementosCPN ();		///////referenciar aqui
+    	eCPN = new ElementosCPN (false);		///////referenciar aqui
 		p = eCPN.getPlaces();
 		imagePlace = new Image[p.size()];
 		rPlace = new Rectangle[p.size()];
@@ -206,8 +206,6 @@ public class AnimationClass extends Applet  implements Runnable, KeyListener {
         ball.setVelocity(new Point2D(x,y) );
         ball.setFaceAngle(angle);
         
-        
-       
         
         currentPlaceUpdate = (Place) p.get(0);
         for (int i=0; i<rPlace.length; i++) {

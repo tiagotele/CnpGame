@@ -1,4 +1,4 @@
-package Controller;
+package Cont;
 
 import java.io.*;
 import java.net.*;
