@@ -1,4 +1,4 @@
-package Cont;
+package Controller;
 
 import java.io.*;
 import java.net.*;
@@ -159,8 +159,6 @@ public class CpnXmlReader {
 					
 			}
 
-			System.out.println("cond: "+cond);
-			
 			// cria uma nova instancia do Place com os dados do xml
 			transition = new Transition(id, text, cond);
 

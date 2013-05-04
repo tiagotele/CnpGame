@@ -1,9 +1,9 @@
-package Cont;
+package Controller;
 
 import java.util.ArrayList;
 
 import Model.Arc;
-import Model.Ficha;
+import Model.Token;
 import Model.Place;
 import Model.Transition;
 
@@ -71,7 +71,7 @@ public class FireTransition {
 			//verificar se o place possui fichas
 			if (p!=null) {
 				//p.getInitmark() //->nao serve pois eu devo pegar o numero de fichas atuais no place, nao só os iniciais
-				ArrayList<Ficha> fichasP = p.getTodasAsFichas();
+				ArrayList<Token> fichasP = p.getTodasOsTokens();
 				
 				
 			}

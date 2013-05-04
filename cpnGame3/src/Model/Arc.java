@@ -56,19 +56,21 @@ public class Arc {
 		// System.out.println(text);
 		String aux = "";
 		
-		if (text.startsWith("(")) { //exemplo: cor = (b,a)
-			String aux2 = text;//.substring(1, text.length()-1);
-			System.out.println("aux2 == "+aux2);
-			aux = aux2;
-
-		} else {
-
-			if (text.length() < 2) // exemplo: cor == b
-				aux = text;
-			else
-				aux = text.substring(0, text.length() - 2);	//restante. exemplo: cor = 1`1
+//		if (text.startsWith("(")) { //exemplo: cor = (b,a)
+//			String aux2 = text;//.substring(1, text.length()-1);
+//			System.out.println("aux2 == "+aux2);
+//			aux = aux2;
+//
+//		} else {
+//
+//			if (text.length() < 2) // exemplo: cor == b
+//				aux = text;
+//			else
+//				aux = text.substring(0, text.length() - 2);	//restante. exemplo: cor = 1`1
+//		
+//		}
 		
-		}
+		aux = text;
 		
 		this.text = aux;
 	}

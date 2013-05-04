@@ -56,6 +56,13 @@
           </product>
           <layout>colset BxA = product Bombeiro * Agua;</layout>
         </color>
+        <color id="ID1422889061">
+          <id>B</id>
+          <alias>
+            <id>Bombeiro</id>
+          </alias>
+          <layout>colset B = Bombeiro;</layout>
+        </color>
         <color id="ID85042">
           <id>UNIT</id>
           <unit/>
@@ -131,7 +138,7 @@
                 anchor.vertical="3"/>
         </marking>
         <type id="ID1412319741">
-          <posattr x="-380.500000"
+          <posattr x="-406.000000"
                    y="241.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
@@ -142,7 +149,7 @@
           <textattr colour="Black"
                     bold="false"/>
           <text tool="CPN Tools"
-                version="3.4.0">Bombeiro</text>
+                version="3.4.0">B</text>
         </type>
         <initmark id="ID1412319742">
           <posattr x="-372.000000"
@@ -235,7 +242,7 @@
                 anchor.vertical="0"/>
         </marking>
         <type id="ID1422493684">
-          <posattr x="-48.500000"
+          <posattr x="-74.000000"
                    y="244.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
@@ -246,7 +253,7 @@
           <textattr colour="Black"
                     bold="false"/>
           <text tool="CPN Tools"
-                version="3.4.0">Bombeiro</text>
+                version="3.4.0">B</text>
         </type>
         <initmark id="ID1422682392">
           <posattr x="-66.000000"
@@ -287,7 +294,7 @@
                 anchor.vertical="0"/>
         </marking>
         <type id="ID1422508468">
-          <posattr x="232.500000"
+          <posattr x="207.000000"
                    y="244.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
@@ -298,7 +305,7 @@
           <textattr colour="Black"
                     bold="false"/>
           <text tool="CPN Tools"
-                version="3.4.0">Bombeiro</text>
+                version="3.4.0">B</text>
         </type>
         <initmark id="ID1422682441">
           <posattr x="215.000000"
@@ -339,7 +346,7 @@
                 anchor.vertical="0"/>
         </marking>
         <type id="ID1422508528">
-          <posattr x="221.500000"
+          <posattr x="196.000000"
                    y="24.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
@@ -350,7 +357,7 @@
           <textattr colour="Black"
                     bold="false"/>
           <text tool="CPN Tools"
-                version="3.4.0">Bombeiro</text>
+                version="3.4.0">B</text>
         </type>
         <initmark id="ID1422682548">
           <posattr x="215.000000"
@@ -391,7 +398,7 @@
                 anchor.vertical="0"/>
         </marking>
         <type id="ID1422513218">
-          <posattr x="-369.500000"
+          <posattr x="-395.000000"
                    y="-176.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
@@ -402,7 +409,7 @@
           <textattr colour="Black"
                     bold="false"/>
           <text tool="CPN Tools"
-                version="3.4.0">Bombeiro</text>
+                version="3.4.0">B</text>
         </type>
         <initmark id="ID1422682346">
           <posattr x="-387.000000"
@@ -443,7 +450,7 @@
                 anchor.vertical="0"/>
         </marking>
         <type id="ID1422520830">
-          <posattr x="-58.500000"
+          <posattr x="-84.000000"
                    y="-180.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
@@ -454,7 +461,7 @@
           <textattr colour="Black"
                     bold="false"/>
           <text tool="CPN Tools"
-                version="3.4.0">Bombeiro</text>
+                version="3.4.0">B</text>
         </type>
         <initmark id="ID1422682728">
           <posattr x="-66.000000"
@@ -495,7 +502,7 @@
                 anchor.vertical="0"/>
         </marking>
         <type id="ID1422524018">
-          <posattr x="217.500000"
+          <posattr x="192.000000"
                    y="-184.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
@@ -506,7 +513,7 @@
           <textattr colour="Black"
                     bold="false"/>
           <text tool="CPN Tools"
-                version="3.4.0">Bombeiro</text>
+                version="3.4.0">B</text>
         </type>
         <initmark id="ID1422682606">
           <posattr x="215.000000"
@@ -3009,6 +3016,7 @@ a&gt;0]</text>
       <IndexNode expanded="false"/>
       <IndexNode expanded="true">
         <IndexNode expanded="true">
+          <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>

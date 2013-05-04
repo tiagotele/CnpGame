@@ -1,4 +1,4 @@
-package Cont;
+package Controller;
 
 import java.util.*;
 
@@ -69,12 +69,12 @@ public class ElementosCPN {
 			Place currentPlace = (Place) places.get(i);
 			placeToPlace[i] = new int[currentPlace.getPass().size()];
 			
-			System.out.println("Principal -> "+currentPlace.getText());
+			
 			for (int j=0; j<currentPlace.getPass().size(); j++){
 				val2 = (MyInt)currentPlace.getPass().get(j);
 				Place saidaPlace = (Place) places.get(val2.getX());
 				placeToPlace[i][j]=val2.getX();
-				System.out.println("Saida -> "+saidaPlace.getText());
+				
 			}
 		}
 		
@@ -282,8 +282,8 @@ public class ElementosCPN {
     				 String placeend = currentArc.getPlaceend();
     				 String orientation = currentArc.getOrientation();
     				 String textoArco = currentArc.getText();
-    				 if (textoArco.contains("`"))
-    					 textoArco = textoArco.substring(0, textoArco.indexOf("`"));
+//    				 if (textoArco.contains("`"))
+//    					 textoArco = textoArco.substring(0, textoArco.indexOf("`"));
     				 
     				// System.out.println("texto do current arc em "+a+": "+textoArco);
     				 
@@ -291,28 +291,22 @@ public class ElementosCPN {
     					 if (orientation.equals("TtoP"))
     						 try {
     							 matrizPostString[p][t] = currentArc.getText();	/////
-    							 System.out.println("matrizPostString = "+matrizPostString[p][t] );
-    							 
+    							  
     							 matrizPost[p][t]= Integer.parseInt(textoArco);
     						 }catch (NumberFormatException e) {
     							 matrizPost[p][t]= 2;	//
     							 
-    							 
-    							 System.out.println("condicao TtoP: "+textoArco);
 							}
     					 else if (orientation.equals("PtoT")) {
 //    						 if (  textoArco )
     						 try {
     							 matrizPreString[p][t] = currentArc.getText();	/////
-    							 System.out.println("matrizPreString = "+matrizPreString[p][t] );
-    							 
     							 matrizPre[p][t]= Integer.parseInt(textoArco);
     							
     							 
     						 }catch (NumberFormatException e) {
     							 matrizPre[p][t]= 2;
     							 
-    							 System.out.println("condicao PtoT: "+textoArco);
 							}
     					 }
     					  
