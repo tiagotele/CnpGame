@@ -1,14 +1,17 @@
 
 
-import java.awt.*;
-import java.applet.*;
-import java.util.*;
-import java.awt.image.*;
-import java.net.*;
-import java.awt.event.*;
-
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
+import java.applet.Applet;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.Rectangle;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Random;
 
 import Controller.ElementosCPN;
 import Model.Arc;

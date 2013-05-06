@@ -217,10 +217,10 @@ public class ElementosCPN {
     	//local true == exeução teste ElementosCPN.java
     	//		false == execução de arquivoo externo
     	 if (local) {
-    		 reader = new CpnXmlReader("bin/Controller/GameTesteArtigoColorida.cpn" );
+    		 reader = new CpnXmlReader("src/CPN_testes/GameTesteArtigoColorida.cpn" );
     	 }
     	 else {
-    		 reader = new CpnXmlReader("Controller/GameTesteArtigoColorida.cpn" );
+    		 reader = new CpnXmlReader("CPN_testes/GameTesteArtigoColorida.cpn" );
     	 }
 
        
