@@ -12,7 +12,9 @@ import org.xml.sax.SAXException;
 
 import Model.Arc;
 import Model.Place;
+import Model.StructDeclarations;
 import Model.Transition;
+import Model.UnitDeclatarion;
 
 public class CpnXmlReader {
 
@@ -52,6 +54,115 @@ public class CpnXmlReader {
 		// pega todos os elementos place do XML
 	}
 
+	//lê XML e completa a StructDeclarations
+	public void lerDeclaracoes () throws Exception {
+		System.out.println("----------teste");
+		StructDeclarations sd = new StructDeclarations();
+
+		ArrayList<String> cores = new ArrayList<String>();
+		
+		NodeList nl = elem.getElementsByTagName("block");
+		
+		for (int i = 0; i < nl.getLength(); i++) {
+			Element tagColor = (Element) nl.item(i);
+//			System.out.println("tagColor item "+i+" = "+tagColor.getTagName());
+			
+			NodeList nlColor = tagColor.getElementsByTagName("color");
+			
+			String cond = "";			
+			for (int j = 0; j < nlColor.getLength(); j++) {
+				Element tagCond = (Element) nlColor.item(j);
+									
+				try{
+					cond = getChildTagValue(tagCond, "id");
+					System.out.println("cond = "+cond);
+					
+					if (!cores.contains(cond))
+						cores.add(cond);
+					
+				}catch (NullPointerException e) {
+					cond="";
+				}
+					
+			}			
+			
+			//falta: analisar os elementos compostos (exemplo: BxA)
+
+			System.out.println();
+			NodeList nlVar = tagColor.getElementsByTagName("var");
+			
+			String cond2 = "";			
+			for (int j = 0; j < nlVar.getLength(); j++) {
+				Element tagCond = (Element) nlVar.item(j);
+//				System.out.println("tagCond de var "+j+" == "+tagCond.getTagName());
+									
+				try{
+					cond2 = getChildTagValue(tagCond, "id");
+					System.out.println("cond2 = "+cond2);
+					
+					if (!cores.contains(cond2))
+						cores.add(cond2);
+					
+				}catch (NullPointerException e) {
+					cond2="";
+				}
+					
+			}
+			
+			
+			System.out.println("Cores:");
+			for (int a=0;a<cores.size();a++) {
+				System.out.print(cores.get(a)+" ");
+			}
+			System.out.println();
+			
+//			System.out.println();
+			System.out.println();
+//			// cria uma nova instancia do Place com os dados do xml
+//			UnitDeclatarion ud = new Transition(id, text, cond);
+//
+//			// adiciona o place na cole��o (vector) de places
+//			transitions.add(transition);
+		
+		}
+		
+		/**
+		
+		for (int i = 0; i < nl.getLength(); i++) {
+			Element tagTransition = (Element) nl.item(i);
+
+			NodeList nlCond = tagTransition.getElementsByTagName("cond");
+			
+			// pega os dados do place atual
+			String id = tagTransition.getAttribute("id");
+			String text = getChildTagValue(tagTransition, "text");
+			String cond = "";
+			
+			
+			for (int j = 0; j < nlCond.getLength(); j++) {
+				Element tagCond = (Element) nlCond.item(j);
+									
+				try{
+					cond = getChildTagValue(tagCond, "text");
+				}catch (NullPointerException e) {
+					cond="";
+				}
+					
+			}
+
+			// cria uma nova instancia do Place com os dados do xml
+			transition = new Transition(id, text, cond);
+
+			// adiciona o place na cole��o (vector) de places
+			transitions.add(transition);
+		}
+
+		return transitions;
+		 * */
+		
+	}
+	
+	
 	// ler do XML (CPN) e retorna um vector contendo os places
 	public ArrayList<Place> lerPlaces() throws Exception {
 

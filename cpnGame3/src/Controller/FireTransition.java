@@ -41,7 +41,7 @@ public class FireTransition {
 		
 		for (int i=0; i<arcos.size(); i++) {
 			//verifica se o arco possui a transição disparada no final, ou seja,
-			// que seja PtoT
+			// que seja PtoT (P->T)  -->  todo mundo que chega na transição
 			if (arcos.get(i).getTransend().equals(idTransFired) &&
 					arcos.get(i).getOrientation().equals("PtoT")) {
 				
@@ -50,7 +50,7 @@ public class FireTransition {
 			}
 		}
 		
-		//ja com todos os places e arcos de entrada, podemos verificar se as fichas presentes nos places
+		//ja com todos os ids dos places e os arcos de entrada, podemos verificar se as fichas presentes nos places
 		// satisfazem as condições nos arcos
 		for (int i=0; i<idPlacesEntrada.size() && fire==true; i++) {
 
@@ -61,19 +61,37 @@ public class FireTransition {
 				if (arcosEntrada.get(j).getPlaceend().equals(idPlacesEntrada.get(i)))
 					a = arcosEntrada.get(j);
 			
-			
-			ArrayList<Place> refPlaces = refElemCPN.getPlaces();
-			//procurar o place com o id do laço atual
-			for (int j=0; j<refPlaces.size(); j++)
-				if (refPlaces.get(j).getId().equals(idPlacesEntrada.get(i)))
-					p = refPlaces.get(j);
-			
-			//verificar se o place possui fichas
-			if (p!=null) {
-				//p.getInitmark() //->nao serve pois eu devo pegar o numero de fichas atuais no place, nao só os iniciais
-				ArrayList<Token> fichasP = p.getTodasOsTokens();
+			if (a != null) {
+				
+				//procurar que tipo (type) eh a condição do arco
+//				String typeA = ;
 				
 				
+				ArrayList<Place> refPlaces = refElemCPN.getPlaces();
+				// procurar o place com o id do laço atual
+				for (int j = 0; j < refPlaces.size(); j++)
+					if (refPlaces.get(j).getId().equals(idPlacesEntrada.get(i)))
+						p = refPlaces.get(j);
+
+				// verificar se o place possui fichas
+				if (p != null) {
+					// p.getInitmark() //->nao serve pois eu devo pegar o numero
+					// de fichas atuais no place, nao só os iniciais
+					ArrayList<Token> tokensP = p.getTodasOsTokens();
+					
+					//verificar se existe algum token que satisfaça a condição do arco 'a'
+					boolean existeToken = false;
+					for (int j=0; j<tokensP.size() && existeToken==false; j++) {
+						if (tokensP.get(i).getType().equals("")) {}//parei aqui
+					}
+
+				}
+				else {
+					System.out.println("Place com o id "+idPlacesEntrada.get(i)+" não encontrado!");
+				}
+			}
+			else {
+				System.out.println("Arco não encontrado!");
 			}
 		}
 		
@@ -130,6 +148,22 @@ public class FireTransition {
 		*/
 	}
 	
+	
+	private String getTypeArc (String condicaoArco) {
+    	//teste
+    	//exemplo: condicaoArco = "(b,a)";
+		
+//		String condicao = condicaoArco.substring(1, condicaoArco.length()-1);	// b,a
+//		String[] arrayCond = condicao.split(",");	// b a 
+    	
+//		System.out.println("(teste) condicao arco: "+condicao);
+//    	for (int i=0; i<arrayCond.length; i++) {
+//    		System.out.print(arrayCond[i]+" ");
+//    	}
+		
+		
+		return "";
+	}	
 	
 	public ArrayList<Arc> getInputArcs() {
 		return inputArcs;

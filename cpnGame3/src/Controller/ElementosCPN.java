@@ -230,6 +230,9 @@ public class ElementosCPN {
        //String path = "";
        //CpnXmlReader reader = new CpnXmlReader( path );
        
+    	 reader.lerDeclaracoes();
+    	 
+    	 
         places = reader.lerPlaces();  
         transitions = reader.lerTransitions();        
         arcs = reader.lerArcs();    
@@ -241,7 +244,7 @@ public class ElementosCPN {
         
         fillSaidaPlace();
         
-        
+       
         
     } catch( Exception e ) {  
         e.printStackTrace();  
@@ -448,8 +451,6 @@ public class ElementosCPN {
     	elementosCPN.showMatrizC();
     	elementosCPN.showRelativeTopLeft();
     	
-    	    	
-    	    
     }  
 }
 

@@ -364,7 +364,8 @@ public class AnimationClass extends Applet  implements Runnable, KeyListener {
         			keyCode=0;	
         		
         		**/
-        	}
+        		
+        	}	// fim de (inPlace!=edgePlace)
         	
         }	       		
         		
