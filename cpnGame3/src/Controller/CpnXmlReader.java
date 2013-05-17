@@ -57,7 +57,9 @@ public class CpnXmlReader {
 	//lê XML e completa a StructDeclarations
 	public void lerDeclaracoes () throws Exception {
 		System.out.println("----------teste");
-		StructDeclarations sd = new StructDeclarations();
+//		StructDeclarations sd = new StructDeclarations();
+		
+		ArrayList<UnitDeclatarion> coresDeclaradas = new ArrayList<UnitDeclatarion>();
 
 		ArrayList<String> cores = new ArrayList<String>();
 		
@@ -69,13 +71,28 @@ public class CpnXmlReader {
 			
 			NodeList nlColor = tagColor.getElementsByTagName("color");
 			
-			String cond = "";			
+			String cond = "";
+			String cond4 = "";
+			
 			for (int j = 0; j < nlColor.getLength(); j++) {
 				Element tagCond = (Element) nlColor.item(j);
 									
 				try{
 					cond = getChildTagValue(tagCond, "id");
 					System.out.println("cond = "+cond);
+					
+					cond4 = getChildTagValue(tagCond, "layout");
+					System.out.println("cond4: "+cond4);
+					if (cond4.contains("colset")) {
+						String[] aux1 = cond4.split("=");
+						
+						//aux01[0]
+						String aux10 = aux1[0];
+						String aux11[] = aux10.split(" ");
+						String aux12 = aux11[1];	//nome da variavel do colset
+						System.out.println("teste aux12: "+aux12);
+						
+					}
 					
 					if (!cores.contains(cond))
 						cores.add(cond);
@@ -91,7 +108,8 @@ public class CpnXmlReader {
 			System.out.println();
 			NodeList nlVar = tagColor.getElementsByTagName("var");
 			
-			String cond2 = "";			
+			String cond2 = "";
+			String cond3 = "";
 			for (int j = 0; j < nlVar.getLength(); j++) {
 				Element tagCond = (Element) nlVar.item(j);
 //				System.out.println("tagCond de var "+j+" == "+tagCond.getTagName());
@@ -100,6 +118,13 @@ public class CpnXmlReader {
 					cond2 = getChildTagValue(tagCond, "id");
 					System.out.println("cond2 = "+cond2);
 					
+					cond3 = getChildTagValue(tagCond, "layout");
+//					System.out.println("layout = "+cond3);
+//					
+//					if (cond3.contains("var")) {
+//						
+//					}
+//					
 					if (!cores.contains(cond2))
 						cores.add(cond2);
 					
@@ -110,11 +135,16 @@ public class CpnXmlReader {
 			}
 			
 			
+			
 			System.out.println("Cores:");
 			for (int a=0;a<cores.size();a++) {
 				System.out.print(cores.get(a)+" ");
+				
 			}
 			System.out.println();
+			
+			
+			
 			
 //			System.out.println();
 			System.out.println();

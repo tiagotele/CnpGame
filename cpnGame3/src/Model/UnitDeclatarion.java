@@ -4,50 +4,43 @@ import java.util.ArrayList;
 
 public class UnitDeclatarion {
 
-	private String ID;
-	private String varCol;	//colset ou variável
 	private String nome;	// exemplo: "Bombeiro"
-	private String tipo;	// int ; product ; ...
-	private ArrayList<String> elementosProduct;
+	private ArrayList<String> tipo;	// int ; product ; ...
 	
-	public UnitDeclatarion (String id, String valOuColset, String nome, String type, ArrayList<String> complemento) {
-		this.ID = id;
-		this.varCol = valOuColset;
+	public UnitDeclatarion (String nome, String t) {
 		this.nome = nome;
-		this.tipo = type;
-		this.elementosProduct = complemento;
+		this.tipo = new ArrayList<String>();
+		this.tipo.add(t);
 	}
 	
-	public UnitDeclatarion (String id, String valOuColset, String nome, String type, String... complemento) {
-		this.ID = id;
-		this.varCol = valOuColset;
+	public UnitDeclatarion (String nome, String... t) {
 		this.nome = nome;
-		this.tipo = type;
-
-		this.elementosProduct = new ArrayList<String>();
-		for (int i=0; i<complemento.length; i++)
-			elementosProduct.add(complemento[i]);
+		this.tipo = new ArrayList<String>();
 		
+		for (int i=0; i<t.length; i++)
+			tipo.add(t[i]);
 	}
 	
-	public String getID() {
-		return ID;
+	public UnitDeclatarion (String nome, ArrayList<String> t) {
+		this.nome = nome;
+		this.tipo = t;
 	}
 	
-	public ArrayList<String> getElementosProduct() {
-		return elementosProduct;
-	}
-
-	public String getVarCol() {
-		return varCol;
-	}
-
 	public String getNome() {
 		return nome;
 	}
-
-	public String getTipo() {
+	
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	
+	public ArrayList<String> getTipo() {
 		return tipo;
 	}
 	
+	public void setTipo(ArrayList<String> tipo) {
+		this.tipo = tipo;
+	}
+	
+		
 }

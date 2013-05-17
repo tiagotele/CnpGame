@@ -22,14 +22,6 @@ public class StructDeclarations {
 		declaracoes.add(ud);
 	}
 	
-	public void addDeclaracoes (String id, String valOuColset, String nome, String type, ArrayList<String> complemento) {
-		UnitDeclatarion ud = new UnitDeclatarion(id, valOuColset, nome, type, complemento);
-		declaracoes.add(ud);
-	}
 	
-	public void addDeclaracoes (String id, String valOuColset, String nome, String type, String... complemento) {
-		UnitDeclatarion ud = new UnitDeclatarion(id, valOuColset, nome, type, complemento);
-		declaracoes.add(ud);
-	}
 	
 }
