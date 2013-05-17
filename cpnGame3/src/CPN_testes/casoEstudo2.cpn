@@ -132,7 +132,7 @@
                 version="3.4.0">INT</text>
         </type>
         <initmark id="ID1422889443">
-          <posattr x="-246.000000"
+          <posattr x="-266.000000"
                    y="-76.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
@@ -143,7 +143,7 @@
           <textattr colour="Black"
                     bold="false"/>
           <text tool="CPN Tools"
-                version="3.4.0"/>
+                version="3.4.0">0`1</text>
         </initmark>
       </place>
       <place id="ID1422889477">
@@ -184,7 +184,7 @@
                 version="3.4.0">INT</text>
         </type>
         <initmark id="ID1422889479">
-          <posattr x="-14.000000"
+          <posattr x="-34.000000"
                    y="134.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
@@ -195,7 +195,7 @@
           <textattr colour="Black"
                     bold="false"/>
           <text tool="CPN Tools"
-                version="3.4.0"/>
+                version="3.4.0">0`1</text>
         </initmark>
       </place>
       <place id="ID1422889516">
@@ -236,7 +236,7 @@
                 version="3.4.0">INT</text>
         </type>
         <initmark id="ID1422889518">
-          <posattr x="-14.000000"
+          <posattr x="-34.000000"
                    y="-76.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
@@ -247,7 +247,7 @@
           <textattr colour="Black"
                     bold="false"/>
           <text tool="CPN Tools"
-                version="3.4.0"/>
+                version="3.4.0">0`1</text>
         </initmark>
       </place>
       <place id="ID1422889558">
@@ -288,7 +288,7 @@
                 version="3.4.0">INT</text>
         </type>
         <initmark id="ID1422889560">
-          <posattr x="220.000000"
+          <posattr x="200.000000"
                    y="134.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
@@ -299,7 +299,7 @@
           <textattr colour="Black"
                     bold="false"/>
           <text tool="CPN Tools"
-                version="3.4.0"/>
+                version="3.4.0">0`1</text>
         </initmark>
       </place>
       <place id="ID1422889603">
@@ -340,7 +340,7 @@
                 version="3.4.0">INT</text>
         </type>
         <initmark id="ID1422889605">
-          <posattr x="220.000000"
+          <posattr x="200.000000"
                    y="-76.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
@@ -351,7 +351,7 @@
           <textattr colour="Black"
                     bold="false"/>
           <text tool="CPN Tools"
-                version="3.4.0"/>
+                version="3.4.0">0`1</text>
         </initmark>
       </place>
       <place id="ID1422889651">
@@ -392,7 +392,7 @@
                 version="3.4.0">INT</text>
         </type>
         <initmark id="ID1422889653">
-          <posattr x="460.000000"
+          <posattr x="440.000000"
                    y="134.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
@@ -403,7 +403,7 @@
           <textattr colour="Black"
                     bold="false"/>
           <text tool="CPN Tools"
-                version="3.4.0"/>
+                version="3.4.0">0`1</text>
         </initmark>
       </place>
       <place id="ID1422889702">
@@ -444,7 +444,7 @@
                 version="3.4.0">INT</text>
         </type>
         <initmark id="ID1422889704">
-          <posattr x="453.000000"
+          <posattr x="433.000000"
                    y="-76.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
@@ -455,7 +455,7 @@
           <textattr colour="Black"
                     bold="false"/>
           <text tool="CPN Tools"
-                version="3.4.0"/>
+                version="3.4.0">0`1</text>
         </initmark>
       </place>
       <trans id="ID1422890433"
@@ -2797,9 +2797,7 @@
           </IndexNode>
         </IndexNode>
       </IndexNode>
-      <IndexNode expanded="false">
-        <IndexNode expanded="false"/>
-      </IndexNode>
+      <IndexNode expanded="false"/>
       <IndexNode expanded="true">
         <IndexNode expanded="false">
           <IndexNode expanded="true"/>

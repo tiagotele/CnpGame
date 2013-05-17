@@ -18,6 +18,11 @@ public class Token {
 	private void splitToken (String val) {
 		String aux[] = val.split("`");
 		
+		//teste
+		System.out.println("+++teeste split");
+		for (int i=0;i<aux.length;i++)
+			System.out.println("aux["+i+"]: "+aux[i]);
+		
 		this.quant = Integer.parseInt(aux[0]);
 		this.val = aux[1];		
 	} 

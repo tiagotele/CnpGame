@@ -217,10 +217,12 @@ public class ElementosCPN {
     	//local true == exeução teste ElementosCPN.java
     	//		false == execução de arquivoo externo
     	 if (local) {
-    		 reader = new CpnXmlReader("src/CPN_testes/GameTesteArtigoColorida.cpn" );
+    		 reader = new CpnXmlReader("src/CPN_testes/casoEstudo3.cpn" );
+    		 //reader = new CpnXmlReader("src/CPN_testes/GameTesteArtigoColorida.cpn" );
     	 }
     	 else {
-    		 reader = new CpnXmlReader("CPN_testes/GameTesteArtigoColorida.cpn" );
+    		 reader = new CpnXmlReader("CPN_testes/casoEstudo3.cpn" );
+    		 //reader = new CpnXmlReader("CPN_testes/GameTesteArtigoColorida.cpn" );
     	 }
 
        

@@ -25,8 +25,8 @@ import View.Point2D;
 //Agora parece que está ok.
 
 public class AnimationClass extends Applet  implements Runnable, KeyListener {
-    static int SCREENWIDTH = 640+50;
-    static int SCREENHEIGHT = 480+70;
+    static int SCREENWIDTH = 1640+50;
+    static int SCREENHEIGHT = 1480+70;
     Thread gameloop;
     
     Rectangle rPlace[];
